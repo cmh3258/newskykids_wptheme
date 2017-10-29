@@ -15,14 +15,38 @@
 get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-			<h1>Sunny!</h1>
+		<main id="main" class="site-holder">
+			<h1>A whole new Adventure, Coming Soon!</h1>
 
 
-			<?php $twitter_url=get_option('test_twitter_url');?>
-				// Show the twitter URL in footer.
-			<?php _e('Twitter URL') ?> -<?php echo $twitter_url ?>
+			<h4>In the mean time, let's be friends!</h4>
 
+			<div class="social-links">
+	        	<?php 
+	        		$twitter_url=get_option('test_twitter_url');
+	        		if($twitter_url){
+	        			echo "<a href=" . $twitter_url . "><img src='" . get_template_directory_uri() . "/images/twitter_icon.svg'/></a>";
+	        		}
+	        		$facebook_url=get_option('test_fb_url');
+	        		if($facebook_url){
+	        			echo "<a href=" . $facebook_url . "><img src='" . get_template_directory_uri() . "/images/fb_icon.svg'/></a>";
+	        		}
+	        		$youtube_url=get_option('test_youtube_url');
+	        		if($youtube_url){
+	        			echo "<a href=" . $youtube_url . "><img src='" . get_template_directory_uri() . "/images/yt_icon.svg'/></a>";
+	        		}
+	        	?>
+	        </div>
+
+
+
+
+
+
+<!-- 
+			fb_icon
+			twitter_icon
+			youtube_icon -->
 
 
 		</main><!-- #main -->

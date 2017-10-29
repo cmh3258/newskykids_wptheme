@@ -157,37 +157,126 @@ function theme_option_page() {
 <?php
 }
 
-function add_theme_menu_item() {
-add_theme_page("Theme Customization", "Theme Customization", "manage_options", "theme-options", "theme_option_page", null, 99);}
-add_action("admin_menu", "add_theme_menu_item");
+// function add_theme_menu_item() {
+// 	add_theme_page("Theme Customization", "Theme Customization", "manage_options", "theme-options", "theme_option_page", null, 99);
+// }
+// add_action("admin_menu", "add_theme_menu_item");
+
 function theme_section_description(){
-echo '<p>Theme Option Section</p>';}
+	echo '<p>Theme Option Section</p>';
+}
+
 function options_callback(){
-$options = get_option( 'first_field_option' );
-echo '<input name="first_field_option" id="first_field_option" type="checkbox" value="1" class="code" ' . checked( 1, $options, false ) . ' /> Check for enabling custom help text.';
+	$options = get_option( 'first_field_option' );
+	echo '<input name="first_field_option" id="first_field_option" type="checkbox" value="1" class="code" ' . checked( 1, $options, false ) . ' /> Check for enabling custom help text.';
 }
 function test_theme_settings(){
 	add_option('first_field_option',1);// add theme option to database
-	add_settings_section( 'first_section', 'New Theme Options Section',
-	'theme_section_description','theme-options');
-	add_settings_field('first_field_option','Test Settings Field','options_callback',
-	'theme-options','first_section');//add settings field to the “first_section”
-	register_setting( 'theme-options-grp', 'first_field_option');
+	add_settings_section('first_section', 'New Theme Options Section',
+	'theme_section_description','theme-options'); //add section
+
+	// add_settings_field('first_field_option','Test Settings Field','options_callback',
+	// 'theme-options','first_section');//add settings field to the “first_section”
+	// register_setting( 'theme-options-grp', 'first_field_option');
 
 	//add settings filed with callback display_test_twitter_element.
+	
+	//be able to change header text
+	add_settings_field('header_text', 'Get Header Text', 'display_header_text', 'theme-options', 'first_section');
+	register_setting( 'theme-options-grp', 'get_header_text');
+
+	//be able to change social media links
+	//twitter
 	add_settings_field('twitter_url', 'Test Twitter Profile Url', 'display_test_twitter_element', 'theme-options', 'first_section');
 	register_setting( 'theme-options-grp', 'test_twitter_url');
+
+	//facebook
+	add_settings_field('fb_url', 'Test FB Profile Url', 'display_fb_link_element', 'theme-options', 'first_section');
+	register_setting( 'theme-options-grp', 'test_fb_url');
+
+	//youtube
+	add_settings_field('youtube_url', 'Test YT Profile Url', 'display_yt_link_element', 'theme-options', 'first_section');
+	register_setting( 'theme-options-grp', 'test_youtube_url');
+
+	//add settings filed with callback test_logo_display.
+	// add_settings_field("fb_icon", "Facebook Icon", "fb_icon_display", "theme-options", "first_section");
+	// register_setting( 'theme-options-grp', 'logo');
+
+	// add_settings_field("twitter", "Twitter Logo", "twitter_icon_display", "theme-options", "first_section");
+	// register_setting( 'theme-options-grp', 'twitter_icon');
+
+	// add_settings_field("youtube_icon", "Youtube Logo", "youtube_icon_display", "theme-options", "first_section");
+	// register_setting( 'theme-options-grp', 'logo');
+
 }
 add_action('admin_init','test_theme_settings');
 
 
+function fb_icon_display()
+{
+	//php code to take input file name for logo image.
+	?>
+		<input type="file" name="fb_icon" />
+		<?php echo get_option('fb_icon'); ?>
+	<?php
+}
+
+function twitter_icon_display()
+{
+	//php code to take input file name for logo image.
+	?>
+		<input type="file" name="twitter_icon" />
+		hi
+		<?php echo get_option('twitter_icon'); ?>
+	<?php
+}
+
+function youtube_icon_display()
+{
+	//php code to take input file name for logo image.
+	?>
+		<input type="file" name="youtube_icon" />
+		<?php echo get_option('youtube_icon'); ?>
+	<?php
+}
+
+
+/*function display_header_text(){
+	//php code to take input from text field for twitter URL.
+	?>
+		<input type="text" name="get_header_text" id="get_header_text" value="<?php echo get_option('get_header_text'); ?>" />
+	<?php
+}*/
 
 function display_test_twitter_element(){
-//php code to take input from text field for twitter URL.
-?>
-	<input type="text" name="test_twitter_url" id="test_twitter_url" value="<?php echo get_option('test_twitter_url'); ?>" />
-<?php
+	//php code to take input from text field for twitter URL.
+	?>
+		<input type="text" name="test_twitter_url" value="<?php echo get_option('test_twitter_url'); ?>" />
+	<?php
 }
+
+
+function display_fb_link_element(){
+	//php code to take input from text field for fb URL.
+	?>
+		<input type="text" name="test_fb_url" id="test_fb_url" value="<?php echo get_option('test_fb_url'); ?>" />
+	<?php
+}
+
+function display_yt_link_element(){
+	//php code to take input from text field for youtube URL.
+	?>
+		<input type="text" name="test_youtube_url" id="test_youtube_url" value="<?php echo get_option('test_youtube_url'); ?>" />
+	<?php
+}
+
+
+function wpb_add_google_fonts() {
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister', false ); 
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Caveat:400,700', false ); 
+}
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+
 
 
 /**
