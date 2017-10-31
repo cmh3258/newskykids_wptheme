@@ -29,9 +29,24 @@
     letter-spacing: .5px;
     margin-bottom: 10px;
 }
+.social-links{
+	margin-top: 1em;
+    margin-left: 2em;
+    display: inline-block;
+}
+.social-links a{
+    padding: 7px;
+
+}
+.social-links a:hover{
+}
 .social-links a img{
 	width: 22px;
     margin-left: 1em;
+    /*transition: margin 0.1s ease-in;*/
+    cursor: pointer;
+}
+.social-links a img:hover{
 }
 
 
@@ -112,8 +127,8 @@
 }
 
 #mailchimp #mc_embed_signup{
-	display: inline;
-    width: 90%;
+	display: inline-block;
+    width: 85%;
     float: left;
 }
 
