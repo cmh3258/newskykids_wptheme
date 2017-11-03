@@ -187,16 +187,20 @@ function test_theme_settings(){
 
 	//be able to change social media links
 	//twitter
-	add_settings_field('twitter_url', 'Test Twitter Profile Url', 'display_test_twitter_element', 'theme-options', 'first_section');
+	add_settings_field('twitter_url', 'Twitter Profile Url', 'display_test_twitter_element', 'theme-options', 'first_section');
 	register_setting( 'theme-options-grp', 'test_twitter_url');
 
 	//facebook
-	add_settings_field('fb_url', 'Test FB Profile Url', 'display_fb_link_element', 'theme-options', 'first_section');
+	add_settings_field('fb_url', 'FB Profile Url', 'display_fb_link_element', 'theme-options', 'first_section');
 	register_setting( 'theme-options-grp', 'test_fb_url');
 
 	//youtube
-	add_settings_field('youtube_url', 'Test YT Profile Url', 'display_yt_link_element', 'theme-options', 'first_section');
+	add_settings_field('youtube_url', 'YT Profile Url', 'display_yt_link_element', 'theme-options', 'first_section');
 	register_setting( 'theme-options-grp', 'test_youtube_url');
+
+	//instagram
+	add_settings_field('instagram_url', 'Instagram Profile Url', 'display_instagram_link_element', 'theme-options', 'first_section');
+	register_setting( 'theme-options-grp', 'test_instagram_url');
 
 	//add settings filed with callback test_logo_display.
 	// add_settings_field("fb_icon", "Facebook Icon", "fb_icon_display", "theme-options", "first_section");
@@ -240,6 +244,14 @@ function youtube_icon_display()
 	<?php
 }
 
+function instagram_icon_display()
+{
+	//php code to take input file name for logo image.
+	?>
+		<input type="file" name="instagram_icon" />
+		<?php echo get_option('instagram_icon'); ?>
+	<?php
+}
 
 /*function display_header_text(){
 	//php code to take input from text field for twitter URL.
@@ -270,11 +282,16 @@ function display_yt_link_element(){
 	<?php
 }
 
+function display_instagram_link_element(){
+	//php code to take input from text field for youtube URL.
+	?>
+		<input type="text" name="test_instagram_url" id="test_instagram_url" value="<?php echo get_option('test_instagram_url'); ?>" />
+	<?php
+}
+
 
 function wpb_add_google_fonts() {
-	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister', false ); 
-	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Caveat:400,700', false ); 
-	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Comfortaa:300,400,700', false ); 
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Caveat:400,700|Comfortaa:300,400,700', false ); 
 }
 add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 

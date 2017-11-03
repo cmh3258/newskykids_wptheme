@@ -21,9 +21,6 @@ get_header(); ?>
 
 			<!-- <h4>In the mean time, let's be friends!</h4> -->
 
-			
-
-
 	        <div id="mailchimp">
 	        	<!-- Begin MailChimp Signup Form -->
 				<div id="mc_embed_signup">
@@ -59,17 +56,21 @@ get_header(); ?>
 
 				<div class="social-links">
 	        	<?php 
-	        		// $twitter_url=get_option('test_twitter_url');
-	        		// if($twitter_url){
-	        		// 	echo "<a href=" . $twitter_url . "><img src='" . get_template_directory_uri() . "/images/twitter_icon.svg'/></a>";
-	        		// }
+	        		$youtube_url=get_option('test_youtube_url');
+	        		if($youtube_url){
+	        			echo "<a href=" . $youtube_url . "><img src='" . get_template_directory_uri() . "/images/yt_icon.svg'/></a>";
+	        		}
 	        		$facebook_url=get_option('test_fb_url');
 	        		if($facebook_url){
 	        			echo "<a href=" . $facebook_url . "><img src='" . get_template_directory_uri() . "/images/fb_icon.svg'/></a>";
 	        		}
-	        		$youtube_url=get_option('test_youtube_url');
-	        		if($youtube_url){
-	        			echo "<a href=" . $youtube_url . "><img src='" . get_template_directory_uri() . "/images/yt_icon.svg'/></a>";
+	        		$instagram_url=get_option('test_instagram_url');
+	        		if($instagram_url){
+	        			echo "<a href=" . $instagram_url . "><img src='" . get_template_directory_uri() . "/images/instagram_icon.svg'/></a>";
+	        		}
+	        		$twitter_url=get_option('test_twitter_url');
+	        		if($twitter_url){
+	        			echo "<a href=" . $twitter_url . "><img src='" . get_template_directory_uri() . "/images/twitter_icon.svg'/></a>";
 	        		}
 	        	?>
 	        </div>
